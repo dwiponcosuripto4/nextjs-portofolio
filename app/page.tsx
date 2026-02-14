@@ -12,7 +12,7 @@ import { Timeline } from "./components/Timelines/Timeline";
 export default function Home() {
   const data = [
     {
-      title: "2024",
+      title: "2025",
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
