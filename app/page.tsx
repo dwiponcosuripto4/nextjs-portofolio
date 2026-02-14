@@ -247,7 +247,7 @@ export default function Home() {
                     showBorder={false}
                     className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 rounded-lg border text-sm sm:text-base"
                   >
-                    Contact Me
+                    Pelajari Lebih Lanjut
                   </GradientText>
                 </div>
               </div>
