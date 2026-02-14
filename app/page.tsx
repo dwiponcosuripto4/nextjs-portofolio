@@ -4,7 +4,6 @@ import RotatingText from "./components/RotatingText/RotatingText";
 import SplitText from "./components/SplitText/SplitText";
 import BlurText from "./components/BlurText/BlurText";
 import AnimatedContent from "./components/AnimatedContent/AnimatedContent";
-import Silk from "./components/Silk/Silk";
 import GradientText from "./components/GradientText/GradientText";
 import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
 import { Timeline } from "./components/Timelines/Timeline";
@@ -155,16 +154,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#0B1C2D]">
-      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full">
-        <Silk
-          speed={5}
-          scale={1}
-          color="#3FA9C9"
-          noiseIntensity={10}
-          rotation={0}
-        />
-      </div>
+    <div className="min-h-screen overflow-x-hidden">
       <div className="container mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
           <div className="lg:col-span-6 relative h-[40vh] sm:h-[50vh] lg:h-screen">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import GradualBlur from "./components/GradualBlur/GradualBlur";
+import Silk from "./components/Silk/Silk";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,8 +30,28 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <Silk
+            speed={5}
+            scale={1}
+            color="#3FA9C9"
+            noiseIntensity={10}
+            rotation={0}
+          />
+        </div>
+
+        <div className="relative z-10">{children}</div>
       </body>
+      <GradualBlur
+        target="page"
+        position="bottom"
+        height="7rem"
+        strength={2}
+        divCount={5}
+        curve="bezier"
+        exponential
+        opacity={1}
+      />
     </html>
   );
 }
