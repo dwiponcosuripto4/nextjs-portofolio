@@ -165,14 +165,14 @@ export default function Home() {
           rotation={0}
         />
       </div>
-      <div className="container mx-auto h-screen">
-        <div className="grid grid-cols-12 ">
-          <div className="col-span-6 relative">
+      <div className="container mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
+          <div className="lg:col-span-6 relative h-[40vh] sm:h-[50vh] lg:h-screen">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
-          <div className="col-span-6">
-            <div className="flex items-center h-full">
-              <div className="flex flex-col gap-6">
+          <div className="lg:col-span-6">
+            <div className="flex items-center h-full py-8 lg:py-0">
+              <div className="flex flex-col gap-4 sm:gap-6">
                 <AnimatedContent
                   distance={150}
                   direction="horizontal"
@@ -183,13 +183,13 @@ export default function Home() {
                   scale={1.1}
                   threshold={0.2}
                 >
-                  <div className="flex items-center gap-2">
-                    <h1 className="text-2xl text-white font-bold">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h1 className="text-lg sm:text-xl md:text-2xl text-white font-bold">
                       I'm Ready For Job
                     </h1>
                     <RotatingText
                       texts={["Web Depelopment", "Web Programing"]}
-                      mainClassName="px-2 sm:px-2 md:px-3 bg-[#3FA9C9] text-white overflow-hidden py-0.5 sm:py-1  justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
+                      mainClassName="px-2 sm:px-2 md:px-3 bg-[#3FA9C9] text-white overflow-hidden py-0.5 sm:py-1  justify-center rounded-lg text-lg sm:text-xl md:text-2xl font-bold inline-flex transition-all"
                       staggerFrom={"last"}
                       initial={{ y: "100%" }}
                       animate={{ y: 0 }}
@@ -208,7 +208,7 @@ export default function Home() {
                 <div className="flex flex-col items-start">
                   <SplitText
                     text="I'm Dwiponco Suripto"
-                    className="text-6xl font-semibold text-start"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-start"
                     delay={50}
                     animationFrom={{
                       opacity: 0,
@@ -223,7 +223,7 @@ export default function Home() {
                   />
                   <SplitText
                     text="Full Stack Developer"
-                    className="text-6xl font-semibold text-start text-[#3FA9C9]"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-start text-[#3FA9C9]"
                     delay={75}
                     animationFrom={{
                       opacity: 0,
@@ -242,7 +242,7 @@ export default function Home() {
                   delay={75}
                   animateBy="words"
                   direction="top"
-                  className="text-xl mb-8"
+                  className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8"
                 />
                 <div className="flex items-center">
                   <GradientText
@@ -255,7 +255,7 @@ export default function Home() {
                     ]}
                     animationSpeed={3}
                     showBorder={false}
-                    className="px-8 py-6 rounded-lg border"
+                    className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 rounded-lg border text-sm sm:text-base"
                   >
                     Contact Me
                   </GradientText>
@@ -265,7 +265,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="px-4 sm:px-6 lg:px-8">
         <ScrollVelocity texts={["Full-Stack Developer", "Web Developer"]} />
         <Timeline data={data} />
       </div>
