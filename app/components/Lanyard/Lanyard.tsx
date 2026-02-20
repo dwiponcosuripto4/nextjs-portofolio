@@ -39,13 +39,14 @@ export default function Lanyard({
   transparent = true,
 }: LanyardProps) {
   return (
-    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center touch-none">
       <Canvas
         camera={{ position, fov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }
+        style={{ touchAction: "none" }}
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
@@ -235,10 +236,14 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
-              e.target.releasePointerCapture(e.pointerId);
+              e.stopPropagation();
+              if (e.target.hasPointerCapture(e.pointerId)) {
+                e.target.releasePointerCapture(e.pointerId);
+              }
               drag(false);
             }}
             onPointerDown={(e: any) => {
+              e.stopPropagation();
               e.target.setPointerCapture(e.pointerId);
               drag(
                 new THREE.Vector3()
