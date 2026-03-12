@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import GradualBlur from "./components/GradualBlur/GradualBlur";
 import Silk from "./components/Silk/Silk";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
+import Grainient from "./components/Grainient/Grainient";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,27 +34,53 @@ export default function RootLayout({
         <SplashScreen />
 
         <div className="fixed inset-0 -z-10 pointer-events-none">
-          <Silk
+          {/* <Silk
             speed={5}
             scale={1}
             color="#3FA9C9"
             noiseIntensity={10}
             rotation={0}
+          /> */}
+          {/* <ColorBends
+            colors={["#eaf6ff", "#0b1c2d", "#3fa9c9"]}
+            rotation={0}
+            speed={0.2}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={1}
+            parallax={0.5}
+            noise={0.1}
+            transparent
+            autoRotate={0}
+          /> */}
+          <Grainient
+            color1="#0b1c2d"
+            color2="#3FA9C9"
+            color3="#0b1c2d"
+            timeSpeed={0.25}
+            colorBalance={0}
+            warpStrength={1}
+            warpFrequency={5}
+            warpSpeed={2}
+            warpAmplitude={50}
+            blendAngle={0}
+            blendSoftness={0.05}
+            rotationAmount={500}
+            noiseScale={2}
+            grainAmount={0.1}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.5}
+            gamma={1}
+            saturation={1}
+            centerX={0}
+            centerY={0}
+            zoom={0.9}
           />
         </div>
 
         <div className="relative z-10">{children}</div>
-
-        <GradualBlur
-          target="page"
-          position="bottom"
-          height="7rem"
-          strength={2}
-          divCount={5}
-          curve="bezier"
-          exponential
-          opacity={1}
-        />
       </body>
     </html>
   );

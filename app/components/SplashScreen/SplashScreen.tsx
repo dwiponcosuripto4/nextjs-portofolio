@@ -39,7 +39,7 @@ export default function SplashScreen() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000]"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
@@ -51,10 +51,10 @@ export default function SplashScreen() {
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0 }}
-            animate={{ opacity: startExit ? 0 : 0.3 }}
+            animate={{ opacity: startExit ? 0 : 0.55 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20" />
+            <div className="absolute inset-0 bg-[#0b1a2b]" />
           </motion.div>
 
           {/* Content container */}
@@ -76,7 +76,7 @@ export default function SplashScreen() {
               }
               className="text-5xl md:text-7xl font-light mb-6"
             >
-              <span className="text-white">Hi,</span>
+              <span className="text-[#EAF6FF]">Hi,</span>
             </motion.div>
 
             {/* "I'm Dwiponco Suripto" text */}
@@ -96,10 +96,8 @@ export default function SplashScreen() {
               }
               className="text-3xl md:text-5xl font-bold mb-6"
             >
-              <span className="text-white">I'm </span>
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                Dwiponco Suripto
-              </span>
+              <span className="text-[#EAF6FF]">I'm </span>
+              <span className="text-[#EAF6FF]">Dwiponco Suripto</span>
             </motion.div>
 
             {/* "Welcome to my portofolio" text */}
@@ -119,7 +117,9 @@ export default function SplashScreen() {
               }
               className="text-xl md:text-3xl font-light"
             >
-              <span className="text-cyan-300">Welcome to my portofolio</span>
+              <span className="text-[#47bbde] font-bold">
+                Welcome to my portofolio
+              </span>
             </motion.div>
 
             {/* Animated line */}
@@ -137,7 +137,7 @@ export default function SplashScreen() {
                     }
                   : {}
               }
-              className="h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mt-8 mx-auto max-w-md"
+              className="h-1 bg-gradient-to-r from-transparent via-[#EAF6FF] to-transparent mt-8 mx-auto max-w-md"
               style={{ originX: 0.5 }}
             />
           </div>
@@ -145,7 +145,7 @@ export default function SplashScreen() {
           {/* Animated dots */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: startExit ? 0 : [0, 0.5, 0] }}
+            animate={{ opacity: startExit ? 0 : [0.2, 1, 0.2] }}
             transition={{
               duration: 2,
               repeat: Infinity,
@@ -153,9 +153,9 @@ export default function SplashScreen() {
             }}
             className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2"
           >
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
-            <div className="w-2 h-2 rounded-full bg-blue-500" />
-            <div className="w-2 h-2 rounded-full bg-purple-600" />
+            <div className="w-2 h-2 rounded-full bg-[#EAF6FF] shadow-[0_0_10px_rgba(234,246,255,0.95)]" />
+            <div className="w-2 h-2 rounded-full bg-[#3FA9C9] shadow-[0_0_12px_rgba(63,169,201,0.95)]" />
+            <div className="w-2 h-2 rounded-full bg-[#EAF6FF]/85 shadow-[0_0_10px_rgba(234,246,255,0.8)]" />
           </motion.div>
         </motion.div>
       )}
