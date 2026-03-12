@@ -411,7 +411,7 @@ export default function Home() {
                   <li>• React.js / Next.js</li>
                   <li>• TypeScript</li>
                   <li>• Tailwind CSS</li>
-                  <li>• HTML5 & CSS3</li>
+                  <li>• HTML & CSS</li>
                   <li>• JavaScript (ES6+)</li>
                 </ul>
               </div>
