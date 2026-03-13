@@ -230,12 +230,12 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <div className="container mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
-          <div className="lg:col-span-6 relative h-[60vh] sm:h-[70vh] lg:h-screen touch-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 sm:gap-4 lg:gap-0">
+          <div className="lg:col-span-6 relative h-[34vh] sm:h-[46vh] lg:h-screen touch-none">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
           <div className="lg:col-span-6">
-            <div className="flex items-center h-full py-8 lg:py-0">
+            <div className="flex items-center h-full py-0 sm:py-4 lg:py-0">
               <div className="flex flex-col gap-4 sm:gap-6">
                 <AnimatedContent
                   distance={150}
