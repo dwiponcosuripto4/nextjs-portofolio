@@ -314,6 +314,22 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             transition: all 0.3s ease;
             z-index: -1;
           }
+          @media (max-width: 639px) {
+            .effect.filter,
+            .effect.text {
+              display: none;
+            }
+            li::after,
+            li.active::after {
+              display: none;
+            }
+            li.active {
+              color: black;
+              background: white;
+              font-weight: 500;
+              border-radius: 8px;
+            }
+          }
         `}
       </style>
       <div className="relative" ref={containerRef}>
