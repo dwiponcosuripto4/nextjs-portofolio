@@ -61,14 +61,14 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="images/porto.png"
+              src="/Images/porto.png"
               alt="startup template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/e-com.png"
+              src="/Images/e-com.png"
               alt="startup template"
               width={500}
               height={500}
@@ -85,7 +85,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="images/inv.png"
+              src="/Images/inv.png"
               alt="startup template"
               width={500}
               height={500}
@@ -114,28 +114,28 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="images/skrip (1).png"
+              src="/Images/skrip (1).png"
               alt="hero template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/skrip (2).png"
+              src="/Images/skrip (2).png"
               alt="feature template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/skrip (3).png"
+              src="/Images/skrip (3).png"
               alt="bento template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/skrip (4).png"
+              src="/Images/skrip (4).png"
               alt="cards template"
               width={500}
               height={500}
@@ -169,7 +169,7 @@ export default function Home() {
           </a>
           <div className="mt-4 grid grid-cols-2 gap-4">
             <img
-              src="images/kos.png"
+              src="/Images/kos.png"
               alt="hero template"
               width={500}
               height={500}
@@ -195,28 +195,28 @@ export default function Home() {
           </p>
           <div className="mt-4 grid grid-cols-2 gap-4">
             <img
-              src="images/skrip (1).png"
+              src="/Images/skrip (1).png"
               alt="hero template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/skrip (4).png"
+              src="/Images/skrip (4).png"
               alt="hero template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/magang1.jpg"
+              src="/Images/magang1.jpg"
               alt="hero template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="images/magang2.jpg"
+              src="/Images/magang2.jpg"
               alt="hero template"
               width={500}
               height={500}
@@ -356,7 +356,7 @@ export default function Home() {
             <div className="flex flex-col items-center mb-12">
               <div className="relative w-48 h-48 mb-6">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/Images/profile.jpg"
                   alt="Dwiponco Suripto"
                   fill
                   className="rounded-full object-cover object-top border-4 border-[#3FA9C9] shadow-xl"
