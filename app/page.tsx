@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Lanyard from "./components/Lanyard/Lanyard";
@@ -9,8 +9,48 @@ import SplitText from "./components/SplitText/SplitText";
 import BlurText from "./components/BlurText/BlurText";
 import AnimatedContent from "./components/AnimatedContent/AnimatedContent";
 import GradientText from "./components/GradientText/GradientText";
-import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
 import { Timeline } from "./components/Timelines/Timeline";
+import LogoLoop from "./components/LogoLoop/LogoLoop";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+} from "react-icons/si";
+
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  {
+    node: <SiTypescript />,
+    title: "TypeScript",
+    href: "https://www.typescriptlang.org",
+  },
+  {
+    node: <SiTailwindcss />,
+    title: "Tailwind CSS",
+    href: "https://tailwindcss.com",
+  },
+];
+
+// Alternative with image sources
+const imageLogos = [
+  {
+    src: "/logos/company1.png",
+    alt: "Company 1",
+    href: "https://company1.com",
+  },
+  {
+    src: "/logos/company2.png",
+    alt: "Company 2",
+    href: "https://company2.com",
+  },
+  {
+    src: "/logos/company3.png",
+    alt: "Company 3",
+    href: "https://company3.com",
+  },
+];
 
 const GooeyNav = dynamic(() => import("./components/GooeyNav/GooeyNav"), {
   ssr: false,
@@ -27,6 +67,12 @@ const items = [
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("About");
+  const [hoveredProjectImage, setHoveredProjectImage] = useState<{
+    src: string;
+    alt: string;
+    x: number;
+    y: number;
+  } | null>(null);
 
   const aboutDetails = [
     { title: "Full Name", value: "Dwiponco Suripto" },
@@ -46,6 +92,78 @@ export default function Home() {
     sectionContainer?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const handleProjectImageAnchorClick = (targetId: string) => {
+    setHoveredProjectImage(null);
+    setActiveSection("About");
+
+    window.setTimeout(() => {
+      const target = document.getElementById(targetId);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
+  };
+
+  const handleProjectMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    const image = target.closest("img");
+
+    if (!(image instanceof HTMLImageElement)) {
+      if (hoveredProjectImage) {
+        setHoveredProjectImage(null);
+      }
+      return;
+    }
+
+    setHoveredProjectImage((prev) => {
+      if (prev && prev.src === image.src) {
+        return {
+          ...prev,
+          x: event.clientX,
+          y: event.clientY,
+        };
+      }
+
+      return {
+        src: image.src,
+        alt: image.alt || "Project preview",
+        x: event.clientX,
+        y: event.clientY,
+      };
+    });
+  };
+
+  const handleProjectMouseLeave = () => {
+    setHoveredProjectImage(null);
+  };
+
+  useEffect(() => {
+    if (activeSection !== "Project") {
+      setHoveredProjectImage(null);
+    }
+  }, [activeSection]);
+
+  const activeNavIndex = items.findIndex(
+    (item) => item.label === activeSection,
+  );
+
+  const renderProjectCardMeta = (year: string) => (
+    <div className="mt-3 flex items-center justify-between gap-3">
+      <p className="text-sm text-neutral-400">{year}</p>
+      <div
+        className="h-6 w-[120px] overflow-hidden rounded-sm"
+        aria-hidden="true"
+      >
+        <LogoLoop
+          logos={techLogos}
+          speed={40}
+          direction="left"
+          logoHeight={14}
+          gap={16}
+          hoverSpeed={0}
+        />
+      </div>
+    </div>
+  );
+
   const data = [
     {
       title: "2026",
@@ -61,14 +179,16 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="/Images/porto.png"
+              src="/images/porto.png"
+              id="timeline-porto"
               alt="startup template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="/Images/e-com.png"
+              src="/images/e-com.png"
+              id="timeline-ecom"
               alt="startup template"
               width={500}
               height={500}
@@ -85,7 +205,8 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="/Images/inv.png"
+              src="/images/inv.png"
+              id="timeline-inv"
               alt="startup template"
               width={500}
               height={500}
@@ -128,14 +249,16 @@ export default function Home() {
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="/Images/skrip (3).png"
+              src="/images/skrip (3).png"
+              id="timeline-skrip-3"
               alt="bento template"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="/Images/skrip (4).png"
+              src="/images/skrip (4).png"
+              id="timeline-skrip-4"
               alt="cards template"
               width={500}
               height={500}
@@ -169,7 +292,8 @@ export default function Home() {
           </a>
           <div className="mt-4 grid grid-cols-2 gap-4">
             <img
-              src="/Images/kos.png"
+              src="/images/kos.png"
+              id="timeline-kos"
               alt="hero template"
               width={500}
               height={500}
@@ -202,7 +326,7 @@ export default function Home() {
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="/Images/skrip (4).png"
+              src="/images/skrip (4).png"
               alt="hero template"
               width={500}
               height={500}
@@ -342,6 +466,7 @@ export default function Home() {
           particleDistances={[90, 10]}
           particleR={0}
           initialActiveIndex={2}
+          activeIndex={activeNavIndex >= 0 ? activeNavIndex : 2}
           animationTime={600}
           timeVariance={0}
           colors={[1, 2, 3, 1, 2, 3, 1, 4]}
@@ -412,7 +537,7 @@ export default function Home() {
                   <li>• TypeScript</li>
                   <li>• Tailwind CSS</li>
                   <li>• HTML & CSS</li>
-                  <li>• JavaScript (ES6+)</li>
+                  <li>• JavaScript </li>
                 </ul>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
@@ -420,11 +545,11 @@ export default function Home() {
                   Back-end
                 </h3>
                 <ul className="space-y-2 text-neutral-200">
-                  <li>• Node.js</li>
-                  <li>• Express.js</li>
                   <li>• PHP</li>
+                  <li>• Laravel</li>
+                  <li>• Next.js</li>
+                  <li>• Spring Boot</li>
                   <li>• RESTful API</li>
-                  <li>• GraphQL</li>
                 </ul>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
@@ -433,9 +558,7 @@ export default function Home() {
                 </h3>
                 <ul className="space-y-2 text-neutral-200">
                   <li>• MySQL</li>
-                  <li>• PostgreSQL</li>
-                  <li>• MongoDB</li>
-                  <li>• Firebase</li>
+                  <li>• SQLite</li>
                 </ul>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
@@ -467,12 +590,192 @@ export default function Home() {
 
         {activeSection === "Project" && (
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#3FA9C9]">
-              My Projects
-            </h2>
-            <p className="text-lg text-neutral-200 mb-8">
-              Coming soon - Project showcase will be added here.
-            </p>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              onMouseMove={handleProjectMouseMove}
+              onMouseLeave={handleProjectMouseLeave}
+            >
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-porto"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-porto");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/porto.png"
+                      alt="Project Porto"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Bootcamp project : Personal Portfolio Website
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Frontend website portofolio menggunakan bootstrap.
+                </p>
+                {renderProjectCardMeta("2026")}
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-ecom"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-ecom");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/e-com.png"
+                      alt="Project E-Commerce"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Bootcamp project : E-Commerce App
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Project e-commerce sederhana menggunakan PHP Native.
+                </p>
+                {renderProjectCardMeta("2026")}
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-inv"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-inv");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/inv.png"
+                      alt="Project Inventaris"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Personal project : Sistem Inventaris Barang
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Website inventaris sederhana berbasis Laravel 12.
+                </p>
+                {renderProjectCardMeta("2026")}
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-skrip-3"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-skrip-3");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/skrip (3).png"
+                      alt="Project Skripsi 3"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Thesis project : Sistem Admin Pengelolaan Data dan Aktivitas
+                  Pengguna
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Pengembangan website skripsi berjudul "Implementasi Sistem
+                  Admin pada Website Portal Informasi Pemerintah Daerah
+                  Kabupaten OKU Timur menggunakan Laravel" berupa fitur admin
+                  untuk monitoring aktivitas pengguna dan pengelolaan data.
+                </p>
+                {renderProjectCardMeta("2025")}
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-kos"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-kos");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/kos.png"
+                      alt="Project Website Kost"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Captone project : Website Informasi Kost
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Website frontend informasi kost dengan integrasi maps dan
+                  WhatsApp.
+                </p>
+                {renderProjectCardMeta("2024")}
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video rounded-lg mb-4 overflow-hidden bg-black/20 flex items-center justify-center p-2">
+                  <a
+                    href="#timeline-skrip-4"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleProjectImageAnchorClick("timeline-skrip-4");
+                    }}
+                    className="block h-full w-full"
+                  >
+                    <img
+                      src="/images/skrip (4).png"
+                      alt="Project Skripsi 4"
+                      className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Internship project : Website Portal Informasi Pemerintah
+                  Daerah Kabupaten OKU Timur
+                </h3>
+                <p className="text-neutral-300 mb-2">
+                  Pengembangan website untuk portal informasi pemerintah daerah
+                  Kabupaten OKU Timur berbasis laravel.
+                </p>
+                {renderProjectCardMeta("2025")}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {hoveredProjectImage && activeSection === "Project" && (
+          <div
+            className="pointer-events-none fixed z-[90] hidden md:block"
+            style={{
+              left: `clamp(16px, ${hoveredProjectImage.x - 320}px, calc(100vw - 736px))`,
+              top: `clamp(16px, ${hoveredProjectImage.y - 170}px, calc(100vh - 340px))`,
+            }}
+          >
+            <div className="relative overflow-hidden rounded-sm border border-white/25 bg-white shadow-[0_24px_65px_rgba(0,0,0,0.48)]">
+              <img
+                src={hoveredProjectImage.src}
+                alt={hoveredProjectImage.alt}
+                className="h-[320px] w-[720px] object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="flex h-24 w-24 items-center justify-center rounded-full bg-black/90 text-base font-medium tracking-wide text-white shadow-[0_12px_24px_rgba(0,0,0,0.5)]">
+                  View
+                </span>
+              </div>
+            </div>
           </div>
         )}
 
