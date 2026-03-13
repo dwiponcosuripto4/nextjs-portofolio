@@ -319,6 +319,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             .effect.text {
               display: none;
             }
+            li,
+            li.active {
+              border-radius: 8px;
+            }
             li::after,
             li.active::after {
               display: none;
@@ -349,7 +353,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white justify-self-center ${
+                className={`rounded-[8px] sm:rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white justify-self-center ${
                   activeIndex === index ? "active" : ""
                 }`}
               >
