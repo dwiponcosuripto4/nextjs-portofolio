@@ -146,10 +146,10 @@ export default function Home() {
   );
 
   const renderProjectCardMeta = (year: string) => (
-    <div className="mt-3 flex items-center justify-between gap-3">
+    <div className="mt-3 flex items-end justify-between gap-3">
       <p className="text-sm text-neutral-400">{year}</p>
       <div
-        className="h-6 w-[120px] overflow-hidden rounded-sm"
+        className="h-6 w-[120px] overflow-hidden rounded-sm translate-y-2"
         aria-hidden="true"
       >
         <LogoLoop
