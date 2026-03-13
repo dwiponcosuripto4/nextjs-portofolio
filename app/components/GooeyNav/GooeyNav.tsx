@@ -323,7 +323,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         >
           <ul
             ref={navRef}
-            className="grid list-none p-0 px-4 m-0 relative z-[3] gap-x-4 md:gap-x-8"
+            className="grid list-none p-0 px-2 sm:px-4 m-0 relative z-[3] gap-x-1 sm:gap-x-3 md:gap-x-8 text-[10px] sm:text-sm md:text-base"
             style={{
               gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))`,
               color: "white",
@@ -341,7 +341,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                   href={item.href}
                   onClick={(e) => handleClick(e, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-[0.6em] px-[1em] inline-block"
+                  className="outline-none py-[0.5em] px-[0.55em] sm:px-[0.85em] md:px-[1em] inline-block whitespace-nowrap"
                 >
                   {item.label}
                 </a>
