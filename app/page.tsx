@@ -73,6 +73,10 @@ export default function Home() {
     x: number;
     y: number;
   } | null>(null);
+  const [certificateLightboxImage, setCertificateLightboxImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
@@ -140,6 +144,22 @@ export default function Home() {
     setHoveredProjectImage(null);
   };
 
+  const handleCertificateImageClick = (
+    event: React.MouseEvent<HTMLDivElement>,
+  ) => {
+    const target = event.target as HTMLElement;
+    const image = target.closest("img");
+
+    if (!(image instanceof HTMLImageElement)) {
+      return;
+    }
+
+    setCertificateLightboxImage({
+      src: image.src,
+      alt: image.alt || "Certificate image",
+    });
+  };
+
   const handleContactFormChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -180,6 +200,27 @@ export default function Home() {
       setHoveredProjectImage(null);
     }
   }, [activeSection]);
+
+  useEffect(() => {
+    if (!certificateLightboxImage) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setCertificateLightboxImage(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [certificateLightboxImage]);
 
   const activeNavIndex = items.findIndex(
     (item) => item.label === activeSection,
@@ -822,7 +863,10 @@ export default function Home() {
 
         {activeSection === "Certificate" && (
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              onClick={handleCertificateImageClick}
+            >
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
                 <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
                   <img
@@ -923,6 +967,35 @@ export default function Home() {
                 <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
                 <p className="text-sm text-neutral-400">Date: 2025</p>
               </div>
+            </div>
+          </div>
+        )}
+
+        {certificateLightboxImage && (
+          <div
+            className="fixed inset-0 z-[120] flex items-center justify-center bg-black/85 px-4 py-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Certificate image lightbox"
+            onClick={() => setCertificateLightboxImage(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setCertificateLightboxImage(null)}
+              className="absolute right-4 top-4 rounded-md border border-white/35 bg-black/40 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-black/70"
+              aria-label="Close certificate lightbox"
+            >
+              Close
+            </button>
+            <div
+              className="max-h-[88vh] max-w-[calc(100vw-2rem)] rounded-md border border-white/25 bg-white/95 p-1 shadow-[0_24px_65px_rgba(0,0,0,0.5)] md:max-w-[calc(100vw-4rem)]"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <img
+                src={certificateLightboxImage.src}
+                alt={certificateLightboxImage.alt}
+                className="block h-auto max-h-[calc(88vh-0.5rem)] w-auto max-w-full object-contain"
+              />
             </div>
           </div>
         )}
