@@ -92,6 +92,102 @@ export default function Home() {
     { title: "Alamat", value: "Yogyakarta, Indonesia" },
   ];
 
+  type SkillWithLevel = {
+    name: string;
+    level: 1 | 2 | 3;
+  };
+
+  type StackSection =
+    | {
+        title: string;
+        showLevel: true;
+        skills: SkillWithLevel[];
+      }
+    | {
+        title: string;
+        showLevel: false;
+        skills: string[];
+      };
+
+  const stackSections: StackSection[] = [
+    {
+      title: "Front-end",
+      showLevel: true,
+      skills: [
+        { name: "Next.js", level: 3 },
+        { name: "Flutter", level: 2 },
+        { name: "React.js", level: 1 },
+      ],
+    },
+    {
+      title: "Back-end",
+      showLevel: true,
+      skills: [
+        { name: "Laravel", level: 3 },
+        { name: "Next.js", level: 1 },
+      ],
+    },
+    {
+      title: "Database",
+      showLevel: true,
+      skills: [
+        { name: "MySQL", level: 3 },
+        { name: "SQLite", level: 2 },
+      ],
+    },
+    {
+      title: "CSS Framework",
+      showLevel: false,
+      skills: ["Bootstrap", "Tailwind CSS"],
+    },
+    {
+      title: "Tools & Platform",
+      showLevel: false,
+      skills: ["Git & GitHub", "VS Code", "Figma", "Postman", "Vercel"],
+    },
+    {
+      title: "Others",
+      showLevel: false,
+      skills: ["Responsive Design", "Version Control", "Problem Solving"],
+    },
+  ];
+
+  const getSkillStatus = (level: number) => {
+    if (level === 3) {
+      return "Advanced";
+    }
+
+    if (level === 2) {
+      return "Intermediate";
+    }
+
+    return "Beginner";
+  };
+
+  const getSkillStatusClass = (level: number) => {
+    if (level === 3) {
+      return "border-sky-300/40 bg-sky-400/20 text-sky-200";
+    }
+
+    if (level === 2) {
+      return "border-emerald-300/40 bg-emerald-400/20 text-emerald-200";
+    }
+
+    return "border-gray-300/40 bg-gray-400/20 text-gray-200";
+  };
+
+  const getSkillLevelBarClass = (level: number) => {
+    if (level === 3) {
+      return "bg-sky-400";
+    }
+
+    if (level === 2) {
+      return "bg-emerald-400";
+    }
+
+    return "bg-gray-400";
+  };
+
   const handleNavClick = (label: string) => {
     setActiveSection(label);
   };
@@ -513,7 +609,7 @@ export default function Home() {
                   direction="top"
                   className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8"
                 />
-                <div className="flex items-center">
+                <div className="flex flex-wrap items-center gap-3">
                   <button
                     type="button"
                     onClick={handleLearnMoreClick}
@@ -534,6 +630,13 @@ export default function Home() {
                       Pelajari Lebih Lanjut
                     </GradientText>
                   </button>
+                  <a
+                    href="/cv-dwiponco-suripto.pdf"
+                    download
+                    className="inline-flex items-center justify-center rounded-lg border border-[#3FA9C9]/60 bg-[#3FA9C9]/15 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#3FA9C9]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA9C9] sm:px-6 sm:py-4 md:px-8 md:py-6 sm:text-base"
+                  >
+                    Download CV
+                  </a>
                 </div>
               </div>
             </div>
@@ -609,63 +712,50 @@ export default function Home() {
         {activeSection === "Stack" && (
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Front-end
-                </h3>
-                <ul className="space-y-2 text-neutral-200">
-                  <li>• HTML & CSS</li>
-                  <li>• Bootstrap</li>
-                  <li>• JavaScript </li>
-                  <li>• React.js / Next.js</li>
-                  <li>• TypeScript</li>
-                  <li>• Tailwind CSS</li>
-                </ul>
-              </div>
-              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Back-end
-                </h3>
-                <ul className="space-y-2 text-neutral-200">
-                  <li>• PHP</li>
-                  <li>• Laravel</li>
-                  <li>• Next.js</li>
-                  <li>• Spring Boot</li>
-                  <li>• RESTful API</li>
-                </ul>
-              </div>
-              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Database
-                </h3>
-                <ul className="space-y-2 text-neutral-200">
-                  <li>• MySQL</li>
-                  <li>• SQLite</li>
-                </ul>
-              </div>
-              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Tools & Platform
-                </h3>
-                <ul className="space-y-2 text-neutral-200">
-                  <li>• Git & GitHub</li>
-                  <li>• VS Code</li>
-                  <li>• Figma</li>
-                  <li>• Postman</li>
-                  <li>• Docker</li>
-                </ul>
-              </div>
-              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
-                <h3 className="text-xl font-semibold mb-4 text-white">
-                  Others
-                </h3>
-                <ul className="space-y-2 text-neutral-200">
-                  <li>• Responsive Design</li>
-                  <li>• Version Control</li>
-                  <li>• Agile Methodology</li>
-                  <li>• Problem Solving</li>
-                </ul>
-              </div>
+              {stackSections.map((section) => (
+                <div
+                  key={section.title}
+                  className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-white">
+                    {section.title}
+                  </h3>
+                  {section.showLevel ? (
+                    <ul className="space-y-4 text-neutral-200">
+                      {section.skills.map((skill) => (
+                        <li key={skill.name}>
+                          <div className="flex items-center justify-between gap-3">
+                            <span>{skill.name}</span>
+                            <span
+                              className={`rounded-full border px-2 py-0.5 text-[11px] font-medium ${getSkillStatusClass(skill.level)}`}
+                            >
+                              {getSkillStatus(skill.level)}
+                            </span>
+                          </div>
+                          <div className="mt-2 flex gap-1.5" aria-hidden="true">
+                            {[1, 2, 3].map((levelIndex) => (
+                              <span
+                                key={levelIndex}
+                                className={`h-1.5 flex-1 rounded-full ${
+                                  skill.level >= levelIndex
+                                    ? getSkillLevelBarClass(skill.level)
+                                    : "bg-white/15"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="space-y-2 text-neutral-200">
+                      {section.skills.map((skill) => (
+                        <li key={skill}>• {skill}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}
