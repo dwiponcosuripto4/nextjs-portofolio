@@ -659,7 +659,10 @@ export default function Home() {
       </div>
 
       {/* Content Sections */}
-      <div id="active-section-content" className="px-4 sm:px-6 lg:px-8 py-8">
+      <div
+        id="active-section-content"
+        className="px-4 sm:px-6 lg:px-8 pt-8 pb-4 sm:py-8"
+      >
         {activeSection === "About" && (
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col items-center mb-12">
