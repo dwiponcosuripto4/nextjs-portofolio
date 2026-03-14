@@ -554,7 +554,7 @@ export default function Home() {
                     </h1>
                     <RotatingText
                       texts={["Web Development", "Web Programing"]}
-                      mainClassName="px-2 sm:px-2 md:px-3 bg-[#47bbde] text-white overflow-hidden py-0.5 sm:py-1  justify-center rounded-lg text-lg sm:text-xl md:text-2xl font-bold inline-flex transition-all"
+                      mainClassName="px-1.5 sm:px-2 md:px-3 bg-[#47bbde] text-white overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-base sm:text-xl md:text-2xl font-bold inline-flex whitespace-nowrap flex-nowrap transition-all"
                       staggerFrom={"last"}
                       initial={{ y: "100%" }}
                       animate={{ y: 0 }}
@@ -643,7 +643,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center py-12">
+      <div className="flex justify-center items-center py-1">
         <GooeyNav
           items={items}
           particleCount={1}
