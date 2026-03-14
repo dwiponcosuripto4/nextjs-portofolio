@@ -532,7 +532,7 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden">
       <div className="container mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 sm:gap-4 lg:gap-0">
-          <div className="lg:col-span-6 relative h-[44vh] sm:h-[46vh] lg:h-screen touch-none">
+          <div className="lg:col-span-6 relative h-[48vh] sm:h-[46vh] lg:h-screen touch-none">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
           <div className="lg:col-span-6">
