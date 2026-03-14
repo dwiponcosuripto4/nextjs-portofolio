@@ -633,7 +633,7 @@ export default function Home() {
                   <a
                     href="/cv-dwiponco-suripto.pdf"
                     download
-                    className="inline-flex items-center justify-center rounded-lg border border-[#3FA9C9]/60 bg-[#3FA9C9]/15 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#3FA9C9]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA9C9] sm:px-6 sm:py-4 md:px-8 md:py-6 sm:text-base"
+                    className="inline-flex items-center justify-center rounded-lg border border-[#3FA9C9]/60 bg-[#3FA9C9]/15 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#3FA9C9]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA9C9] sm:px-6 sm:py-2 md:px-8 md:py-6 sm:text-base"
                   >
                     Download CV
                   </a>
