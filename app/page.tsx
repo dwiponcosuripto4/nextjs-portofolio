@@ -73,6 +73,11 @@ export default function Home() {
     x: number;
     y: number;
   } | null>(null);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const aboutDetails = [
     { title: "Full Name", value: "Dwiponco Suripto" },
@@ -133,6 +138,41 @@ export default function Home() {
 
   const handleProjectMouseLeave = () => {
     setHoveredProjectImage(null);
+  };
+
+  const handleContactFormChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
+    setContactForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const name = contactForm.name.trim();
+    const email = contactForm.email.trim();
+    const message = contactForm.message.trim();
+
+    if (!name || !email || !message) {
+      return;
+    }
+
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=dwiponcosuripto7@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+
+    setContactForm({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   useEffect(() => {
@@ -533,11 +573,12 @@ export default function Home() {
                   Front-end
                 </h3>
                 <ul className="space-y-2 text-neutral-200">
+                  <li>• HTML & CSS</li>
+                  <li>• Bootstrap</li>
+                  <li>• JavaScript </li>
                   <li>• React.js / Next.js</li>
                   <li>• TypeScript</li>
                   <li>• Tailwind CSS</li>
-                  <li>• HTML & CSS</li>
-                  <li>• JavaScript </li>
                 </ul>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10">
@@ -784,51 +825,103 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
                 <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
-                  <p className="text-neutral-400">Certificate Image</p>
+                  <img
+                    src="/Images/Sertifikat/bootcamp.jpg"
+                    alt="Bootcamp Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-white">
-                  Web Development Certificate
+                  Bootcamp Certificate
                 </h3>
-                <p className="text-neutral-300 mb-2">
-                  Issued by: Platform Name
-                </p>
-                <p className="text-sm text-neutral-400">Date: 2024</p>
+                <p className="text-neutral-300 mb-2">Issued by: Eduwork.id</p>
+                <p className="text-sm text-neutral-400">Date: 2026</p>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
                 <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
-                  <p className="text-neutral-400">Certificate Image</p>
+                  <img
+                    src="/Images/Sertifikat/bnsp.jpg"
+                    alt="BNSP Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-white">
-                  JavaScript Certificate
+                  BNSP Certificate
                 </h3>
                 <p className="text-neutral-300 mb-2">
-                  Issued by: Platform Name
+                  Issued by: BNSP (Badan Nasional Sertifikasi Profesi)
                 </p>
-                <p className="text-sm text-neutral-400">Date: 2024</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
                 <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
-                  <p className="text-neutral-400">Certificate Image</p>
+                  <img
+                    src="/Images/Sertifikat/train5.jpg"
+                    alt="Course Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-white">
-                  React.js Certificate
+                  Basic GIT Certificate
                 </h3>
-                <p className="text-neutral-300 mb-2">
-                  Issued by: Platform Name
-                </p>
-                <p className="text-sm text-neutral-400">Date: 2024</p>
+                <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
               </div>
               <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
                 <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
-                  <p className="text-neutral-400">Certificate Image</p>
+                  <img
+                    src="/Images/Sertifikat/train4.jpg"
+                    alt="Course Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-white">
-                  Database Design Certificate
+                  Use Terminal or CMD for Development Certificate
                 </h3>
-                <p className="text-neutral-300 mb-2">
-                  Issued by: Platform Name
-                </p>
-                <p className="text-sm text-neutral-400">Date: 2024</p>
+                <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+                    src="/Images/Sertifikat/train3.jpg"
+                    alt="Course Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Text Editor for Beginners Certificate
+                </h3>
+                <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+                    src="/Images/Sertifikat/train2.jpg"
+                    alt="Course Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Basic Algorithms and Programming Certificate
+                </h3>
+                <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl backdrop-blur border border-white/10 hover:border-[#3FA9C9]/50 transition-all">
+                <div className="aspect-video bg-gradient-to-br from-[#3FA9C9]/20 to-[#40ffaa]/20 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+                    src="/Images/Sertifikat/train1.jpg"
+                    alt="Course Certificate"
+                    className="h-full w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Computer Programming Certificate
+                </h3>
+                <p className="text-neutral-300 mb-2">Issued by: CODEPOLITAN</p>
+                <p className="text-sm text-neutral-400">Date: 2025</p>
               </div>
             </div>
           </div>
@@ -849,16 +942,34 @@ export default function Home() {
                       </div>
                       <div>
                         <p className="text-sm text-neutral-400">Email</p>
-                        <p className="font-medium">your.email@example.com</p>
+                        <a
+                          href="https://mail.google.com/mail/?view=cm&fs=1&to=dwiponcosuripto7@gmail.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-[#3FA9C9] transition-colors"
+                        >
+                          dwiponcosuripto7@gmail.com
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#3FA9C9]/20 flex items-center justify-center">
-                        📱
+                      <div className="w-10 h-10 rounded-full bg-[#3FA9C9]/20 flex items-center justify-center p-2">
+                        <img
+                          src="/Images/icons/social.png"
+                          alt="Social Icon"
+                          className="h-full w-full object-contain"
+                        />
                       </div>
                       <div>
                         <p className="text-sm text-neutral-400">Phone</p>
-                        <p className="font-medium">+62 xxx xxxx xxxx</p>
+                        <a
+                          href="https://wa.me/6285891059752"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-[#3FA9C9] transition-colors"
+                        >
+                          +62 858 9105 9752
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -878,25 +989,51 @@ export default function Home() {
                   </h3>
                   <div className="space-y-3">
                     <a
-                      href="#"
+                      href="https://bit.ly/dwiponcosuripto"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all"
                     >
-                      <span className="text-2xl">🔗</span>
-                      <span className="text-neutral-200">LinkedIn</span>
+                      <span className="h-8 w-8 flex items-center justify-center">
+                        <img
+                          src="/Images/icons/linkedin.png"
+                          alt="LinkedIn Icon"
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                      <span className="text-neutral-200">
+                        https://bit.ly/dwiponcosuripto
+                      </span>
                     </a>
                     <a
-                      href="#"
+                      href="https://github.com/dwiponcosuripto4"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all"
                     >
-                      <span className="text-2xl">💻</span>
-                      <span className="text-neutral-200">GitHub</span>
+                      <span className="h-8 w-8 flex items-center justify-center">
+                        <img
+                          src="/Images/icons/github (1).png"
+                          alt="GitHub Icon"
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                      <span className="text-neutral-200">dwiponcosuripto4</span>
                     </a>
                     <a
-                      href="#"
+                      href="https://www.instagram.com/dwiponcosuripto/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all"
                     >
-                      <span className="text-2xl">📸</span>
-                      <span className="text-neutral-200">Instagram</span>
+                      <span className="h-8 w-8 flex items-center justify-center">
+                        <img
+                          src="/Images/icons/instagram (1).png"
+                          alt="Instagram Icon"
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                      <span className="text-neutral-200">@dwiponcosuripto</span>
                     </a>
                   </div>
                 </div>
@@ -905,13 +1042,17 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-4 text-white">
                   Send a Message
                 </h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleContactSubmit}>
                   <div>
                     <label className="block text-sm font-medium text-neutral-300 mb-2">
                       Name
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      value={contactForm.name}
+                      onChange={handleContactFormChange}
+                      required
                       className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-[#3FA9C9] transition-all text-white"
                       placeholder="Your name"
                     />
@@ -922,6 +1063,10 @@ export default function Home() {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      value={contactForm.email}
+                      onChange={handleContactFormChange}
+                      required
                       className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-[#3FA9C9] transition-all text-white"
                       placeholder="your.email@example.com"
                     />
@@ -932,6 +1077,10 @@ export default function Home() {
                     </label>
                     <textarea
                       rows={5}
+                      name="message"
+                      value={contactForm.message}
+                      onChange={handleContactFormChange}
+                      required
                       className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-[#3FA9C9] transition-all text-white resize-none"
                       placeholder="Your message..."
                     />
