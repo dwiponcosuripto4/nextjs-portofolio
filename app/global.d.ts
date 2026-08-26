@@ -2,6 +2,7 @@ export { };
 
 declare module '*.glb';
 declare module '*.png';
+declare module "*.css";
 
 declare module 'meshline' {
   export const MeshLineGeometry: any;
@@ -21,3 +22,7 @@ declare global {
 /// <reference types="vite/client" />
 declare module '*.glb';
 declare module '*.png';
+declare module "*.css" {
+  const styles: Record<string, string>;
+  export default styles;
+}

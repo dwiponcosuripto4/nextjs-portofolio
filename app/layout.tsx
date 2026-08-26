@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Silk from "./components/Silk/Silk";
+// import Silk from "./components/Silk/Silk";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import Grainient from "./components/Grainient/Grainient";
 
