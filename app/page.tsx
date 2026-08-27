@@ -51,13 +51,13 @@ export default function Home() {
                   scale={1.1}
                   threshold={0.2}
                 >
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h1 className="text-lg font-bold text-white sm:text-xl md:text-2xl">
+                  <div className="flex flex-wrap items-center gap-2 max-sm:flex-nowrap max-sm:gap-1">
+                    <h1 className="text-lg font-bold text-white max-sm:whitespace-nowrap max-sm:text-base sm:text-xl md:text-2xl">
                       I&apos;m Ready For Job
                     </h1>
                     <RotatingText
                       texts={["Web Development", "Web Programing"]}
-                      mainClassName="inline-flex flex-nowrap justify-center overflow-hidden rounded-lg bg-[#47bbde] px-1.5 py-0.5 text-base font-bold text-white sm:px-2 sm:py-1 sm:text-xl md:px-3 md:text-2xl"
+                      mainClassName="inline-flex w-[10rem] shrink-0 flex-nowrap justify-center overflow-hidden rounded-lg bg-[#47bbde] px-1.5 py-0.5 text-base font-bold text-white max-sm:text-sm sm:w-auto sm:px-2 sm:py-1 sm:text-xl md:px-3 md:text-2xl"
                       staggerFrom="last"
                       initial={{ y: "100%" }}
                       animate={{ y: 0 }}
