@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <SplashScreen />
 
-        <div className="fixed inset-0 -z-10 h-[100svh] overflow-hidden pointer-events-none">
+        <div className="fixed inset-0 -z-10 h-screen overflow-hidden pointer-events-none">
           {/* <Silk
             speed={5}
             scale={1}
