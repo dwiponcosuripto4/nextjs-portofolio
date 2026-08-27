@@ -112,11 +112,11 @@ export default function Home() {
                   direction="top"
                   className="mb-4 text-sm sm:mb-6 sm:text-base md:mb-8 md:text-lg lg:text-xl"
                 />
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-nowrap items-center gap-3 max-[366px]:gap-2">
                   <button
                     type="button"
                     onClick={showContent}
-                    className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA9C9]"
+                    className="shrink-0 whitespace-nowrap rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA9C9]"
                   >
                     <GradientText
                       colors={[
@@ -128,7 +128,7 @@ export default function Home() {
                       ]}
                       animationSpeed={3}
                       showBorder={false}
-                      className="rounded-lg border px-4 py-3 text-sm sm:px-6 sm:py-4 sm:text-base md:px-8 md:py-6"
+                      className="rounded-lg border px-4 py-3 text-sm max-[366px]:px-2 max-[366px]:py-2 max-[366px]:text-xs sm:px-6 sm:py-4 sm:text-base md:px-8 md:py-6"
                     >
                       Pelajari Lebih Lanjut
                     </GradientText>
@@ -136,7 +136,7 @@ export default function Home() {
                   <a
                     href="/cv-dwiponco-suripto.pdf"
                     download
-                    className="inline-flex items-center justify-center rounded-lg border border-[#3FA9C9]/60 bg-[#3FA9C9]/15 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#3FA9C9]/30 sm:px-6 sm:py-2 sm:text-base md:px-8 md:py-6"
+                    className="inline-flex shrink-0 items-center justify-center rounded-lg border border-[#3FA9C9]/60 bg-[#3FA9C9]/15 px-4 py-3 text-sm font-semibold text-white whitespace-nowrap transition-all hover:bg-[#3FA9C9]/30 max-[366px]:px-2 max-[366px]:py-2 max-[366px]:text-xs sm:px-6 sm:py-2 sm:text-base md:px-8 md:py-6"
                   >
                     Download CV
                   </a>
