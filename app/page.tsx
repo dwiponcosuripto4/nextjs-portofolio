@@ -35,7 +35,7 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden">
       <div className="container mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-2 sm:gap-4 lg:grid-cols-12 lg:gap-0">
-          <div className="relative h-[48vh] touch-none sm:h-[46vh] lg:col-span-6 lg:h-screen">
+          <div className="relative h-[48vh] touch-none sm:h-[45vh] lg:col-span-6 lg:h-screen">
             <Lanyard position={[0, 0, 10]} gravity={[0, -40, 0]} />
           </div>
           <div className="lg:col-span-6">
