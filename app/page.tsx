@@ -106,7 +106,7 @@ export default function Home() {
                   />
                 </div>
                 <BlurText
-                  text="Lulusan baru dari Universitas Muhammadiyah Yogyakarta dengan jurusan Teknologi Informasi. Memiliki minat dalam mengembangkan solusi web yang inovatif serta selalu bersemangat untuk mempelajari teknologi baru."
+                  text="Lulusan S1 Teknologi Informasi Universitas Muhammadiyah Yogyakarta dengan minat pada Web Programming. Berpengalaman mengembangkan berbagai aplikasi berbasis web, mulai dari website profil UMKM hingga sistem informasi pemerintahan daerah."
                   delay={75}
                   animateBy="words"
                   direction="top"
